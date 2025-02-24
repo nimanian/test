@@ -22,7 +22,7 @@
 
         var params = {
             Text: inputText,
-            SourceLanguageCode: "en",
+            SourceLanguageCode: "en", // Always translate from English
             TargetLanguageCode: targetLanguage
         };
 
@@ -31,7 +31,7 @@
                 console.error("Error:", err);
                 alert("Translation failed! Check the console.");
             } else {
-                document.getElementById("translatedText").innerText = data.TranslatedText;
+                document.getElementById("translatedText").value = data.TranslatedText; // Show translation in text box
             }
         });
     }

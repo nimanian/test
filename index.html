@@ -39,7 +39,7 @@
                 }
             });
         }
-         function startVoiceRecognition() {
+        function startVoiceRecognition() {
         if (!('webkitSpeechRecognition' in window)) {
             alert("Your browser does not support voice recognition. Please use Google Chrome.");
             return;
@@ -58,7 +58,8 @@
 
         recognition.onresult = function(event) {
             var speechResult = event.results[0][0].transcript;
-            document.getElementById("voiceText").value = speechResult;
+            var currentText = document.getElementById("voiceText").value; // Get existing text
+            document.getElementById("voiceText").value = currentText + " " + speechResult; // Append new text
         };
 
         recognition.onerror = function(event) {

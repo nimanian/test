@@ -83,18 +83,19 @@
 
         <section id="translate">
             <h2>Translate Text</h2>
-            <textarea id="inputText" rows="3" placeholder="Enter text to translate"></textarea><br>
-            <select id="targetLanguage">
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-                <option value="de">German</option>
-                <option value="ar">Arabic</option>
-                <option value="fa">Persian (Farsi)</option> <!-- Added Persian -->
-
-            </select>
-            <button onclick="translateText()">Translate</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <textarea id="inputText" rows="3" placeholder="Enter text in English"></textarea>
+                <select id="targetLanguage">
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="ar">Arabic</option>
+                    <option value="fa">Persian (Farsi)</option> <!-- Added Persian -->
+                </select>
+                <button onclick="translateText()">Translate</button>
+            </div>
             <h3>Translated Text:</h3>
-            <p id="translatedText"></p>
+            <textarea id="translatedText" rows="3" readonly></textarea> <!-- Output box -->
         </section>
 
 

@@ -71,6 +71,44 @@
                 console.log("Voice recognition ended.");
             };
     }
+      async function sendMessage() {
+        var userInput = document.getElementById("userInput").value;
+        if (userInput.trim() === "") return;
+
+        // Display user's message
+        var chatbox = document.getElementById("chatbox");
+        chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+
+        // Call OpenAI API
+        var apiKey = "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"; // Replace with your OpenAI API Key
+        var apiUrl = "https://api.openai.com/v1/chat/completions";
+
+        var requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo", // You can change to "gpt-4" if available
+                messages: [{ role: "user", content: userInput }]
+            })
+        };
+
+        document.getElementById("userInput").value = ""; // Clear input box
+
+        try {
+            var response = await fetch(apiUrl, requestOptions);
+            var data = await response.json();
+            var botReply = data.choices[0].message.content;
+
+            chatbox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to latest message
+        } catch (error) {
+            console.error("Error:", error);
+            chatbox.innerHTML += `<p><strong>Bot:</strong> Oops! Something went wrong.</p>`;
+        }
+    }
     </script>
     
 </head>
@@ -87,7 +125,16 @@
             </ul>
         </nav>
     </header>
-
+    <section id="chatbot">
+        <h2>Chat with Dr-Inovates AI</h2>
+        <div class="chat-container">
+            <div id="chatbox">
+                <p><strong>Bot:</strong> Hello! How can I assist you today?</p>
+            </div>
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </section>
     <section id="translate">
         <h2>Translate Text</h2>
         <div class="translate-container">

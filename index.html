@@ -39,6 +39,37 @@
                 }
             });
         }
+         function startVoiceRecognition() {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert("Your browser does not support voice recognition. Please use Google Chrome.");
+            return;
+        }
+
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-US"; // Set language (change as needed)
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        recognition.onstart = function() {
+            console.log("Voice recognition started...");
+        };
+
+        recognition.onresult = function(event) {
+            var speechResult = event.results[0][0].transcript;
+            document.getElementById("voiceText").value = speechResult;
+        };
+
+        recognition.onerror = function(event) {
+            console.error("Speech recognition error:", event.error);
+            alert("Voice recognition error: " + event.error);
+        };
+
+        recognition.onend = function() {
+            console.log("Voice recognition ended.");
+        };
+    }
     </script>
     
 </head>
@@ -82,7 +113,14 @@
             </div>
         </div>
     </section>
-
+    <section id="voice">
+        <h2>Voice to Text</h2>
+        <div class="voice-container">
+            <button onclick="startVoiceRecognition()">🎤 Voice</button>
+            <textarea id="voiceText" rows="4" placeholder="Speech will appear here..." readonly></textarea>
+        </div>
+    </section>
+    
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 Dr-Inovates. All rights reserved.</p>

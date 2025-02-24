@@ -7,10 +7,35 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1000.0/aws-sdk.min.js"></script>
     <script>
-        function showPopup() {
-            alert("Welcome to Dr-Inovates!");
-        }
-    </script>
+    AWS.config.update({
+        region: "ap-southeast-2",  // Change this if your AWS region is different
+        accessKeyId: "YOUR_ACCESS_KEY",
+        secretAccessKey: "YOUR_SECRET_KEY",
+        sessionToken: "YOUR_SESSION_TOKEN"
+    });
+
+    var translate = new AWS.Translate();
+
+    function translateText() {
+        var inputText = document.getElementById("inputText").value;
+        var targetLanguage = document.getElementById("targetLanguage").value;
+
+        var params = {
+            Text: inputText,
+            SourceLanguageCode: "en",
+            TargetLanguageCode: targetLanguage
+        };
+
+        translate.translateText(params, function (err, data) {
+            if (err) {
+                console.error("Error:", err);
+                alert("Translation failed! Check the console.");
+            } else {
+                document.getElementById("translatedText").innerText = data.TranslatedText;
+            }
+        });
+    }
+</script>
     
 </head>
 <body>

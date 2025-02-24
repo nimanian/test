@@ -33,7 +33,7 @@
             translate.translateText(params, function (err, data) {
                 if (err) {
                     console.error("Error:", err);
-                    alert("Translation failed! Check the console.");
+                    alert("Translation failed! Check the console."+err);
                 } else {
                     document.getElementById("translatedText").value = data.TranslatedText; // Show translation in text box
                 }

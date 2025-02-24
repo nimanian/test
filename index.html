@@ -40,36 +40,36 @@
             });
         }
         function startVoiceRecognition() {
-        if (!('webkitSpeechRecognition' in window)) {
-            alert("Your browser does not support voice recognition. Please use Google Chrome.");
-            return;
-        }
-
-        var recognition = new webkitSpeechRecognition();
-        recognition.lang = "en-US"; // Set language (change as needed)
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognition.start();
-
-        recognition.onstart = function() {
-            console.log("Voice recognition started...");
-        };
-
-        recognition.onresult = function(event) {
-            var speechResult = event.results[0][0].transcript;
-            var currentText = document.getElementById("voiceText").value; // Get existing text
-            document.getElementById("voiceText").value = currentText + " " + speechResult; // Append new text
-        };
-
-        recognition.onerror = function(event) {
-            console.error("Speech recognition error:", event.error);
-            alert("Voice recognition error: " + event.error);
-        };
-
-        recognition.onend = function() {
-            console.log("Voice recognition ended.");
-        };
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Your browser does not support voice recognition. Please use Google Chrome.");
+                return;
+            }
+    
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-US"; // Set language (change as needed)
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+    
+            recognition.start();
+    
+            recognition.onstart = function() {
+                console.log("Voice recognition started...");
+            };
+    
+            recognition.onresult = function(event) {
+                var speechResult = event.results[0][0].transcript;
+                var currentText = document.getElementById("voiceText").value; // Get existing text
+                document.getElementById("voiceText").value = currentText + " " + speechResult; // Append new text
+            };
+    
+            recognition.onerror = function(event) {
+                console.error("Speech recognition error:", event.error);
+                alert("Voice recognition error: " + event.error);
+            };
+    
+            recognition.onend = function() {
+                console.log("Voice recognition ended.");
+            };
     }
     </script>
     

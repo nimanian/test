@@ -10,12 +10,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1000.0/aws-sdk.min.js"></script>
 
     <script>
-        // AWS SDK Configuration using AWS Cognito for Security
+        // AWS SDK Configuration with Direct Access Keys (⚠ Not Secure for Public Use)
         AWS.config.update({
             region: "ap-southeast-2",  // Change if needed
-            credentials: new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: "YOUR_COGNITO_IDENTITY_POOL_ID"  // Replace with your Cognito Identity Pool ID
-            })
+            accessKeyId: "ASIAWIODCHZRVT2OL6TZ",  // Replace with your real Access Key ID
+            secretAccessKey: "UoowQ6wCVPJ6vcmcPYOv6f4srwlsrDceWLDoyl70",  // Replace with your real Secret Access Key
+            sessionToken: "IQoJb3JpZ2luX2VjEOv//////////wEaDmFwLXNvdXRoZWFzdC0yIkYwRAIgeTxaLUDM3alfhh3NylWTY5kt0n3jQg89+s8vOc626ssCIGGmNX+ro/sqs8RG5wouWXol9vLup11AiUZWWU0U3BEwKpYDCCQQARoMNDMwNDQyNjkyMTk1IgwxIqLShri0mbI3UrMq8wIo/fykrD84E9F9CXOyVviGCtpeUEemjTKbAq2DN4jAgHdKKQmxvkU0HpNKmyVOxWuiULao1wnIG6gO7X84uuDQJ7Tdkm5ixN58LSPKwI24Elxg0QOnVFtBuj8J873iOwlTCifNo7VYuT8UqDcTZyYEAvStF5IbJk72faB3ze9euC9pYA+mvAL9EOt0vmESzha+IvdFNxRm6t7Gg0n0ZCsxlvEo71g9kuN4yjp6U8fjQEgrphF71wDx1YapSn2R8IQkJeWvdkRMkJ7aDvpL3ZJwu3v340bgluC7lhejRxjTCBiej0pzv34awHHZPuUKcapMooEFfO7fi/OySlPYFLNAj12JLdmDnhF/Mwf9L6rj4xxrWCRS0mfAU0DgIbH0kps5rsdB/bOxu2W7Tw4EImEjv/jNGInWbiX3mjH1lTxC7yp6KZgVt9ML4IzhpVSoBUBdw7zhycYaJGJoquRDC16dZY9tCSeE+ap6St19AWwHHp1nyjDIue+9BjqnAZjU8zB7fUOgfZhEVm5JWZkN0pjP+EQw83an2UjC2c3bVBVwhLRv8Mt+6iZDde6/+nb4hQOtQUoO4bvXdSrSwfQxfuNa3vcJR+KZNNOMYDQVn1bBfyi/FRMtsz3CZZrSE6NuYyuHKwrjCFJi1CaZEsEE6m83yEUoKDGetrBV27lBiyHsMf/DZ//RPqOXEHc2IMO1m3WijOFnO5VC6ANbJghQ12AvYniv"  // If using temporary credentials, include this
         });
 
         var translate = new AWS.Translate();

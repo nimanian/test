@@ -59,32 +59,33 @@
 
     <!-- Main Content Section -->
     <main>
-        <section id="home">
-            <h1>Welcome to Dr-Inovates</h1>
-            <p>Your trusted partner in innovative medical solutions.</p>
+        <section id="translate">
+            <h2>Translate Text</h2>
+            <div class="translate-container">
+                <div class="text-box">
+                    <label for="inputText">English Text:</label>
+                    <textarea id="inputText" rows="4" placeholder="Enter text in English"></textarea>
+                </div>
+        
+                <div class="language-box">
+                    <label for="targetLanguage">Select Language:</label>
+                    <select id="targetLanguage">
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="ar">Arabic</option>
+                        <option value="fa">Persian (Farsi)</option> <!-- Added Persian -->
+                    </select>
+                    <button onclick="translateText()">Translate</button>
+                </div>
+        
+                <div class="text-box">
+                    <label for="translatedText">Translated Text:</label>
+                    <textarea id="translatedText" rows="4" readonly></textarea>
+                </div>
+            </div>
         </section>
 
-        <section id="about">
-            <h2>About Dr-Inovates</h2>
-            <p>Learn more about the doctor and the mission of Dr-Inovates.</p>
-        </section>
-
-        <section id="services">
-            <h2>Our Services</h2>
-            <p>Discover the services we offer to enhance your medical experience.</p>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <textarea name="message" id="message" rows="4" placeholder="Your message"></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
     </main>
 
     <section id="translate">

@@ -25,13 +25,53 @@
             SourceLanguageCode: "en", // Always translate from English
             TargetLanguageCode: targetLanguage
         };
-
         translate.translateText(params, function (err, data) {
             if (err) {
                 console.error("Error:", err);
                 alert("Translation failed! Check the console.");
             } else {
                 document.getElementById("translatedText").value = data.TranslatedText; // Show translation in text box
+            }
+        });
+    }
+    // AWS SDK Configuration
+    AWS.config.update({
+        region: "ap-southeast-2",  // Change if needed
+        accessKeyId: "YOUR_ACCESS_KEY",
+        secretAccessKey: "YOUR_SECRET_KEY",
+        sessionToken: "YOUR_SESSION_TOKEN"
+    });
+
+    var translate = new AWS.Translate();
+
+    // Open the translation modal
+    function openTranslateModal() {
+        document.getElementById("translateModal").style.display = "block";
+    }
+
+    // Close the translation modal
+    function closeTranslateModal() {
+        document.getElementById("translateModal").style.display = "none";
+    }
+
+    // Translate the text and show in the main frame
+    function translateText() {
+        var inputText = document.getElementById("modalInputText").value;
+        var targetLanguage = document.getElementById("modalTargetLanguage").value;
+
+        var params = {
+            Text: inputText,
+            SourceLanguageCode: "en", // Always translate from English
+            TargetLanguageCode: targetLanguage
+        };
+
+        translate.translateText(params, function (err, data) {
+            if (err) {
+                console.error("Error:", err);
+                alert("Translation failed! Check the console.");
+            } else {
+                document.getElementById("translatedText").value = data.TranslatedText;
+                closeTranslateModal(); // Close the popup after translation
             }
         });
     }

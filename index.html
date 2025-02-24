@@ -71,7 +71,7 @@
                 console.log("Voice recognition ended.");
             };
     }
-      async function sendMessage() {
+     async function sendMessage() {
         var userInput = document.getElementById("userInput").value;
         if (userInput.trim() === "") return;
 
@@ -79,8 +79,13 @@
         var chatbox = document.getElementById("chatbox");
         chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
 
-        // Call OpenAI API
-        var apiKey = "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"; // Replace with your OpenAI API Key
+        // ✅ Ensure your OpenAI API Key is correct
+        var apiKey = "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";  // Replace with your OpenAI API Key
+        if (apiKey === "sk-xxxxxxxxxxxxxxxxxxxx") {
+            alert("❌ ERROR: Please replace 'YOUR_OPENAI_API_KEY' with your actual API key.");
+            return;
+        }
+
         var apiUrl = "https://api.openai.com/v1/chat/completions";
 
         var requestOptions = {
@@ -100,13 +105,19 @@
         try {
             var response = await fetch(apiUrl, requestOptions);
             var data = await response.json();
-            var botReply = data.choices[0].message.content;
 
+            if (data.error) {
+                console.error("OpenAI API Error:", data.error.message);
+                chatbox.innerHTML += `<p><strong>Bot:</strong> ❌ Error: ${data.error.message}</p>`;
+                return;
+            }
+
+            var botReply = data.choices[0].message.content;
             chatbox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
             chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to latest message
         } catch (error) {
             console.error("Error:", error);
-            chatbox.innerHTML += `<p><strong>Bot:</strong> Oops! Something went wrong.</p>`;
+            chatbox.innerHTML += `<p><strong>Bot:</strong> ❌ Oops! Something went wrong. Check console.</p>`;
         }
     }
     </script>

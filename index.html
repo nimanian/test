@@ -13,9 +13,9 @@
         // AWS SDK Configuration with Direct Access Keys (⚠ Not Secure for Public Use)
         AWS.config.update({
             region: "ap-southeast-2",  // Change if needed
-            accessKeyId: "ASIAWIODCHZRZS3A3E35",  // Replace with your real Access Key ID
-            secretAccessKey: "zeJ0/fEUyfA8dh3MD0O0j0vkSs+z2vm0PtxSMZCy",  // Replace with your real Secret Access Key
-            sessionToken: "IQoJb3JpZ2luX2VjEPT//////////wEaDmFwLXNvdXRoZWFzdC0yIkcwRQIgXWRoTrJ8i/voucIitAlBR1zAB8BUdMscQgv/f6na5BECIQCkLxJUxdequjKhggFGJi5q8iZl5AUCmjw9nhTNHEGgRiqWAwgtEAEaDDQzMDQ0MjY5MjE5NSIMAvfIy4G/axuoTaSkKvMCW5MeeeAh5VO270OidIrthx/vm0V3JYGyCb/LimMC+b26xqfIm9fwqoGqVGZjBzNLIzrIbC0jVacucCBvp6oAwySu7HmhW7LbpgDy7Jic6rEqdZTRT/RJRMy9PvCBvCWJ59qWMCmhq8wId6NMlGmVUdOMr18HTBxvZrwN06Y/UJ7rM4Pxsfy9S6X2y/Qa29pSAHVjK2t0znxz+tSDgPKoM48W24rBwEaP8Rqqy8UF4PhUw99olW63SZjo3dnx2ndY/m/oiuhZzAB8uKtdwO4kaEkUaqQDtUJbWht0g+OmacBuwRxZ9OTfsAoqNLN7iAtg8kREx+7DrJUjFO65btWCgQLKjMMBAiE+feNkJVA+nF4G8WDwK5lEHulmouMi0coTvjaEzUvzVD/pRfP5E/Ho4pHcroFq9myYqZqyXLGDl8XkuOUXAjKc2atExA0US/U5vRbYFxe2SLNAIW5r9LPPR/YGMDLK85QWU1pmqLPJ4weFuVsw063xvQY6pgHnHVGpDDkif8xmW2wZMZ25IVccFUlNIUBAWKt0NiTVAKRcjmrKkmZrQD7R5ml/QFv3Mx2kbIJLFNVgsUX7RwDagYc6U7kDoobbo9+8s7WsnxDQsPLuAfS7rn2avGBgmZfha6OMY55uxZyOKiR0fxJ4e94nm1Eqddrc807SAVLwzF5bPTHI6E114cUrxllpLf06i0JiTb8WOzvs/eOo4kfgm1R0zHTH"
+            accessKeyId: "ASIAWIODCHZR3YU4E3R2",  // Replace with your real Access Key ID
+            secretAccessKey: "GEZ7TCjyszByvcsmYscscw6scYj6dq9/4qTntxD1",  // Replace with your real Secret Access Key
+            sessionToken: "IQoJb3JpZ2luX2VjEAYaDmFwLXNvdXRoZWFzdC0yIkcwRQIgUTmGdl0PizOYHX1l0TJkxDyheVVo62N1rTi9McFh+AsCIQCrVo3lA07+9TOfRoDRZLB7bphUuFcfwsD1VZC6XNqa+yqWAwg/EAEaDDQzMDQ0MjY5MjE5NSIMGMmoAUSXMnqpAD1jKvMCW2qBfIK3OpL9aeOCFVbWFaxEr8Wmg6ktl979XwmGHJML6ql+81BuRi99xqBzTm0enQJBQxpD/sfBZhaPVEN048R+aAftRB0I5EqQFd7N5dzoL/+qHI9Wx20/xaAZuH639I8LYDQT9pLzw7hJvHoEDiWUNcfTTuJz4NzWK7Uj5Q9he//mVVh8PN6Y6WORD7KGXRVTUjzkh7oXcJ63/CeMNrI2/byJYOPOiMID1IohcL+tUFSqBpOTLFYjQP1BFSkLvCkuwvQlf/tnh9Bd//DVqw2L1/DtV7O8RkDg2wF+oUuJkg4FYoL826RFP9mXd9W+nPFbbBcDDDy5k1+N2o7B/DeC6Gvb4Vd0Abk9K5UANPg4oRaC9fYg2B1gsyEtMAbT8ySxuJ0iVR2uIufpfUTVll35sLYn/0xANpisM/oWfkIw/B+ANL//mXIbttBYG/93k8MyDlJX27427WI3syw24FZOkxaYwKTxStd+LrukbaEPYFEwpKn1vQY6pgFF6aKHSfAVZFTmlFQ7fiibLB37eAVJgel+Eit+a26ie4C4ay/g4xniM5DQjAlL5eLp1zq7xaQae/WTpSNZZokBjHL+8Pf+ojsk9mY2HOOfodnpHNQHez6UErm0ZBWOUKOum+Jdw5p4HxbxCvXZFNOVh+fxZovB/J9APVqAxhylQTCx12fYOL2ch/s7RIdx7J5Yx/tqDshmIyXZQ+B4X+q/QxQr/MYW"
         });
 
              var translate = new AWS.Translate();
@@ -71,55 +71,34 @@
                 console.log("Voice recognition ended.");
             };
     }
-     async function sendMessage() {
-        var userInput = document.getElementById("userInput").value;
-        if (userInput.trim() === "") return;
 
-        // Display user's message
-        var chatbox = document.getElementById("chatbox");
-        chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
-
-        // ✅ Ensure your OpenAI API Key is correct
-        var apiKey = "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";  // Replace with your OpenAI API Key
-        if (apiKey === "sk-xxxxxxxxxxxxxxxxxxxx") {
-            alert("❌ ERROR: Please replace 'YOUR_OPENAI_API_KEY' with your actual API key.");
-            return;
-        }
-
-        var apiUrl = "https://api.openai.com/v1/chat/completions";
-
-        var requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo", // You can change to "gpt-4" if available
-                messages: [{ role: "user", content: userInput }]
-            })
-        };
-
-        document.getElementById("userInput").value = ""; // Clear input box
-
-        try {
-            var response = await fetch(apiUrl, requestOptions);
-            var data = await response.json();
-
-            if (data.error) {
-                console.error("OpenAI API Error:", data.error.message);
-                chatbox.innerHTML += `<p><strong>Bot:</strong> ❌ Error: ${data.error.message}</p>`;
-                return;
+        async function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            if (userInput.trim() === "") return;
+    
+            var chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+    
+            var apiUrl = "https://chatgpt-backend.glitch.me"; // Use your Glitch URL
+    
+            try {
+                var response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: userInput })
+                });
+    
+                var data = await response.json();
+                chatbox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            } catch (error) {
+                console.error("Error:", error);
+                chatbox.innerHTML += `<p><strong>Bot:</strong> ❌ Oops! Something went wrong.</p>`;
             }
-
-            var botReply = data.choices[0].message.content;
-            chatbox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
-            chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to latest message
-        } catch (error) {
-            console.error("Error:", error);
-            chatbox.innerHTML += `<p><strong>Bot:</strong> ❌ Oops! Something went wrong. Check console.</p>`;
+    
+            document.getElementById("userInput").value = "";
         }
-    }
+   
     </script>
     
 </head>
